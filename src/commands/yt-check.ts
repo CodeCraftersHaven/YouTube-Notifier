@@ -1,6 +1,6 @@
 import { IntegrationContextType, publishConfig } from '#sern';
 import { commandModule, CommandType } from '@sern/handler';
-import { ApplicationCommandOptionType, EmbedBuilder, MessageFlags, PermissionFlagsBits } from 'discord.js';
+import { ApplicationCommandOptionType, ChannelType, EmbedBuilder, MessageFlags, PermissionFlagsBits } from 'discord.js';
 import { videoChecker, getNewMainVideo, getNewOptVideo, getGuildDoc } from '#adapters';
 
 export default commandModule({
@@ -127,7 +127,7 @@ export default commandModule({
         const newVideo = await getNewMainVideo(prisma, channelId);
         const channel = await interaction.guild!.channels.fetch(guildDoc.mainAnnounceId);
 
-        if (!channel || !channel.isTextBased()) {
+        if (!channel || channel.type !== ChannelType.GuildText) {
           await interaction.editReply({
             content: `Main announcement channel not found for channel ID: ${channelId}.`
           });
@@ -151,7 +151,7 @@ export default commandModule({
         const channel = await interaction.guild!.channels.fetch(guildDoc.optAnnounceId);
         const newVideos = await getNewOptVideo(prisma, interaction.guild!.id, channelId);
 
-        if (!channel || !channel.isTextBased()) {
+        if (!channel || channel.type !== ChannelType.GuildText) {
           await interaction.editReply({
             content: `Optional announcement channel not found for channel ID: ${channelId}.`
           });

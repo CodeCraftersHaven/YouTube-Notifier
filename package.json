@@ -1,6 +1,6 @@
 {
   "name": "yt-notifier",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "description": "Let's scrape the YouTube Api!",
   "main": "dist/index.js",
@@ -52,5 +52,9 @@
       "./dist/Structures/adapters/index.js"
     ]
   },
-  "type": "module"
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0",
+    "discord.js": ">=14.21.0"
+  }
 }
