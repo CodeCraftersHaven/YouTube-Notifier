@@ -1,0 +1,72 @@
+declare var __DEV__: boolean
+declare var __PROD__: boolean
+declare var __VERSION__: string
+declare namespace NodeJS {
+    interface ProcessEnv {
+        LESSOPEN:string
+        USER:string
+        SSH_CLIENT:string
+        npm_config_user_agent:string
+        XDG_SESSION_TYPE:string
+        GIT_ASKPASS:string
+        npm_node_execpath:string
+        SHLVL:string
+        BROWSER:string
+        npm_config_noproxy:string
+        HOME:string
+        TERM_PROGRAM_VERSION:string
+        VSCODE_IPC_HOOK_CLI:string
+        npm_package_json:string
+        VSCODE_GIT_ASKPASS_MAIN:string
+        VSCODE_GIT_ASKPASS_NODE:string
+        SSL_CERT_FILE:string
+        npm_config_userconfig:string
+        npm_config_local_prefix:string
+        DBUS_SESSION_BUS_ADDRESS:string
+        COLORTERM:string
+        COLOR:string
+        LOGNAME:string
+        _:string
+        npm_config_prefix:string
+        npm_config_npm_version:string
+        XDG_SESSION_CLASS:string
+        TERM:string
+        XDG_SESSION_ID:string
+        npm_config_cache:string
+        npm_config_node_gyp:string
+        PATH:string
+        NODE:string
+        npm_package_name:string
+        XDG_RUNTIME_DIR:string
+        SSL_CERT_DIR:string
+        LANG:string
+        DOTNET_BUNDLE_EXTRACT_BASE_DIR:string
+        LS_COLORS:string
+        VSCODE_GIT_IPC_HANDLE:string
+        TERM_PROGRAM:string
+        npm_lifecycle_script:string
+        SHELL:string
+        npm_package_version:string
+        npm_lifecycle_event:string
+        LESSCLOSE:string
+        VSCODE_GIT_ASKPASS_EXTRA_ARGS:string
+        npm_config_globalconfig:string
+        npm_config_init_module:string
+        PWD:string
+        npm_execpath:string
+        SSH_CONNECTION:string
+        XDG_DATA_DIRS:string
+        npm_config_global_prefix:string
+        npm_command:string
+        INIT_CWD:string
+        EDITOR:string
+        DISCORD_TOKEN:string
+        DISCORD_CLIENT_ID:string
+        DISCORD_GUILD_ID:string
+        BOT_LOGS_CHANNEL_ID:string
+        BOT_OWNER_ID:string
+        NODE_ENV:string
+        MONGODB_URI:string
+        YT_API_KEY:string
+    }
+}

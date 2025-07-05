@@ -1,0 +1,30 @@
+{
+  "extends": "./.sern/tsconfig.json",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "target": "esnext",
+    "module": "esnext",
+    "rootDir": "src",
+    "outDir": "dist",
+    "strict": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "allowUnreachableCode": true,
+    "allowUnusedLabels": true,
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": true,
+    "paths": {
+      "#bot": ["./src/Structures/client/YTClient"],
+      "#sern": ["./src/Structures/sern/index"],
+      "#adapters": ["./src/Structures/adapters/index"]
+    }
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}

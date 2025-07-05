@@ -1,0 +1,60 @@
+import { existsSync, readFileSync } from 'fs';
+function load<T extends object>(
+    struct: Struct<T>,
+    path: string = '.env',
+    inject: boolean = true
+): T {
+    const out: T = {} as never;
+
+    if (!existsSync(path)) {
+        throw new Error(`Cannot read contents of '${path}': File does not exist`);
+    }
+
+    const file = readFileSync(path);
+    const lines = file.toString().split('\n');
+
+    const raw: Record<string, string> = {};
+
+    for (const line of lines) {
+        const [key, value] = [line.split('=')[0], line.split('=').slice(1).join('=')] as [string, string];
+
+        let real_value = value;
+
+        try {
+            real_value = JSON.stringify(JSON.parse(value));
+        } catch {
+            void real_value;
+        }
+
+        raw[key] = value;
+    }
+
+    for (const key in struct) {
+        if (!(key in raw)) {
+            throw new Error(`Cannot map key '${key}': Key does not exist`);
+        }
+
+        out[key] = struct[key](raw[key] as string);
+    }
+
+    if (inject) {
+        Object.assign(process.env, out);
+    }
+
+    return out;
+}
+
+type Struct<T extends object> = {
+    [P in keyof T]: (str: string) => T[P];
+};
+
+export const env = load({
+    DISCORD_TOKEN: String,
+    DISCORD_CLIENT_ID: String,
+    DISCORD_GUILD_ID: String,
+    BOT_LOGS_CHANNEL_ID: String,
+    BOT_OWNER_ID: String,
+    NODE_ENV: String,
+    MONGODB_URI: String,
+    YT_API_KEY: String
+});

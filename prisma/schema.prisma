@@ -1,0 +1,43 @@
+datasource db {
+    provider = "mongodb"
+    url      = env("MONGODB_URI")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Guilds {
+    id             String @id @map("_id")
+    mainSubId      String @default("")
+    mainAnnounceId String @default("")
+    optAnnounceId  String @default("")
+}
+
+model MainYtNotifier {
+    id            String    @id @map("_id")
+    ChannelName   String
+    ChannelId     String    @unique
+    LatestVideoId String?
+    LastChecked   DateTime?
+}
+
+model OptChannels {
+    id       String       @id @map("_id")
+    channels OptChannel[]
+}
+
+type OptChannel {
+    ChannelName   String
+    ChannelId     String
+    LatestVideoId String?
+    DiscordUserId String
+    Active        Boolean
+    LastChecked   DateTime?
+}
+
+model Cooldowns {
+    id      String   @id @map("_id")
+    expires DateTime
+    count   Int
+}

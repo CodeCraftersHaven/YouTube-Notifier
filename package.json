@@ -1,0 +1,56 @@
+{
+  "name": "yt-notifier",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Let's scrape the YouTube Api!",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "sern build",
+    "start": "node .",
+    "gen": "npx prisma generate",
+    "begin": "npm install && npm run gen && npm run build && npm start"
+  },
+  "author": "notsomarv",
+  "maintainers": [
+    {
+      "name": "Not So Marv",
+      "url": "https://discord.com/users/371759410009341952"
+    },
+    {
+      "name": "Peter-Mj-Parker",
+      "url": "https://github.com/Peter-MJ-Parker"
+    }
+  ],
+  "keywords": [
+    "typescript",
+    "sern",
+    "discord.js"
+  ],
+  "dependencies": {
+    "@prisma/client": "^6.11.1",
+    "axios": "^1.10.0",
+    "@sern/handler": "^4.0.2",
+    "discord.js": "^14.19.3",
+    "@sern/publisher": "^1.1.4",
+    "os": "^0.1.2",
+    "@spark.ts/logger": "^1.4.0",
+    "colorette": "^2.0.20"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "typescript": "^5.8.3",
+    "prisma": "^6.11.1"
+  },
+  "imports": {
+    "#sern": [
+      "./dist/Structures/sern/index.js"
+    ],
+    "#bot": [
+      "./dist/Structures/client/YTClient.js"
+    ],
+    "#adapters": [
+      "./dist/Structures/adapters/index.js"
+    ]
+  },
+  "type": "module"
+}

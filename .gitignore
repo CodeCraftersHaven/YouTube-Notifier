@@ -1,0 +1,5 @@
+.env
+node_modules
+dist
+.vscode
+.sern/command-data-remote.json
